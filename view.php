@@ -8,10 +8,16 @@
 <?php
 session_start();
 $session_id = session_id();
+if (!isset($_SESSION['ts']))
+{
+	$_SESSION['ts'] = date("D M j G:i:s T Y");
+}
+$session_ts = $_SESSION['ts'];
+
 $server   = $_SERVER['SERVER_ADDR'];
 echo "<H1>$server</H1><BR>\n";
 echo "<HR>\n";
-echo "Session: $session_id <BR>\n";
+echo "Session: $session_id, $session_ts<BR>\n";
 echo "<P>";
 show_upload_records();
 
